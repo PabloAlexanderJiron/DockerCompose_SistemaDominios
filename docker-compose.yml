@@ -1,6 +1,6 @@
 services:
   nginx:
-    build: ./SPA_GestionDominios
+    build: spa_gestion_dominios:latest
     container_name: api_gateway
     restart: always
     volumes:

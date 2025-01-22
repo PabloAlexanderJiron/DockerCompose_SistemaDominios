@@ -1,0 +1,7 @@
+API_Autenticacion/
+API_GestionDominios/
+SPA_GestionDominios/
+grafana-data/
+postgres_data/
+.env
+.vs/

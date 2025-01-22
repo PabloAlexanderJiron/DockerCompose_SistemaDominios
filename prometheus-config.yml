@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 5s # Intervalo de consulta
+
+scrape_configs:
+  - job_name: 'api-auth-metrics'
+    static_configs:
+      - targets: ['api_autenticacion:8001']
+  
+  - job_name: 'api-dominio-metrics'
+    static_configs:
+      - targets: ['api_dominio:8002']

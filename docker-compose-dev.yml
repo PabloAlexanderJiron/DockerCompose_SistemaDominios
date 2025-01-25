@@ -1,0 +1,62 @@
+services:
+  nginx_dev:
+    image: spa_gestion_dominios_dev:latest
+    container_name: api_gateway_dev
+    restart: always
+    ports:
+      - '8080:80'
+    volumes:
+      - ./nginx/nginx-dev.conf:/etc/nginx/conf.d/default.conf:rw
+    depends_on:
+      - api_autenticacion_dev
+      - api_dominio_dev
+
+  api_autenticacion_dev: 
+    image: api_autenticacion_dev:latest
+    container_name: api_autenticacion_dev
+    restart: always
+    expose:
+      - 8001
+    environment:
+      - URI_DB=Server=postgres;Database=autenticacion_dev;Port=5432;User Id=postgres;Password=admin
+      - URI_DB_TEST=Server=postgres;Database=autenticacion_test;Port=5432;User Id=postgres;Password=admin
+      - SECRETO_JWT=NoLeDiganANadieEsteSecretoSinoTendranMalaSuerteParaSiempreSaludos
+      - PORT=8001
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  api_dominio_dev:
+    image: api_gestion_dominios_dev:latest
+    container_name: api_dominio_dev
+    restart: always
+    expose:
+      - 8002
+    environment:
+      - URI_DB=Server=postgres;Database=dominios_dev;Port=5432;User Id=postgres;Password=admin
+      - URI_DB_TEST=Host=postgres;Database=dominios_test;Port=5432;User Id=postgres;Password=admin
+      - SECRETO_JWT=NoLeDiganANadieEsteSecretoSinoTendranMalaSuerteParaSiempreSaludos
+      - EMAIL_USER= boot.asistente.sistema@gmail.com
+      - EMAIL_PASSWORD= hpbaihzssueiaexl
+      - PORT=8002
+      - HORA_ENVIO_EMAIL=07
+      - MINUTO_ENVIO_EMAIL=30
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:15.3
+    container_name: postgres
+    restart: always
+    expose:
+      - 5432
+    environment: 
+      POSTGRES_PASSWORD: admin
+    volumes: 
+      - ./postgres_data:/var/lib/postgresql/data:rw
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

@@ -3,5 +3,7 @@ API_GestionDominios/
 SPA_GestionDominios/
 grafana-data/
 postgres_data/
+postgres_data_dev/
+postgres_data_new/
 .env
 .vs/

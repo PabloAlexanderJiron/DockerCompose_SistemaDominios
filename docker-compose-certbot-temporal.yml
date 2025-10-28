@@ -1,3 +1,4 @@
+version: '3.8'
 services:
   nginx_temp:
     image: nginx:latest
@@ -5,6 +6,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./certbot/www:/var/www/certbot
+      - ./certbot/www:/usr/share/nginx/html
     command: >
-      bash -c "echo 'Servidor temporal para certbot iniciado' && nginx -g 'daemon off;'"
+      bash -c "mkdir -p /usr/share/nginx/html/.well-known/acme-challenge &&
+               echo 'Servidor temporal activo para Certbot' &&
+               nginx -g 'daemon off;'"

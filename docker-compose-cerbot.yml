@@ -5,4 +5,4 @@ services:
     volumes:
       - ./certbot/conf:/etc/letsencrypt
       - ./certbot/www:/var/www/certbot
-    command: certonly --webroot -w /var/www/certbot --force-renewal --email pablogalaxys23ultra@gmail.com -d  --agree-tos
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email pablogalaxys23ultra@gmail.com -d sistema-dev-ops.lat --agree-tos

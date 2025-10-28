@@ -1,0 +1,10 @@
+services:
+  nginx_temp:
+    image: nginx:latest
+    container_name: nginx_temp_certbot
+    ports:
+      - "80:80"
+    volumes:
+      - ./certbot/www:/var/www/certbot
+    command: >
+      bash -c "echo 'Servidor temporal para certbot iniciado' && nginx -g 'daemon off;'"

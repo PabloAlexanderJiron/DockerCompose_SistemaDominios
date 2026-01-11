@@ -39,8 +39,8 @@ services:
       - URI_DB=Server=postgres;Database=dominios_dev;Port=5432;User Id=postgres;Password=admin
       - URI_DB_TEST=Host=postgres;Database=dominios_test;Port=5432;User Id=postgres;Password=admin
       - SECRETO_JWT=NoLeDiganANadieEsteSecretoSinoTendranMalaSuerteParaSiempreSaludos
-      - EMAIL_USER= boot.asistente.sistema@gmail.com
-      - EMAIL_PASSWORD= hpbaihzssueiaexl
+      - EMAIL_USER=boot.asistente.sistema@gmail.com
+      - EMAIL_PASSWORD=hpbaihzssueiaexl
       - PORT=8002
       - HORA_ENVIO_EMAIL=13
       - MINUTO_ENVIO_EMAIL=20

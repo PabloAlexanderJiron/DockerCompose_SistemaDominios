@@ -42,8 +42,8 @@ services:
       - EMAIL_USER= boot.asistente.sistema@gmail.com
       - EMAIL_PASSWORD= hpbaihzssueiaexl
       - PORT=8002
-      - HORA_ENVIO_EMAIL=07
-      - MINUTO_ENVIO_EMAIL=30
+      - HORA_ENVIO_EMAIL=13
+      - MINUTO_ENVIO_EMAIL=20
     depends_on:
       postgres:
         condition: service_healthy
